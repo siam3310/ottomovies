@@ -85,17 +85,17 @@ export default function MovieEpisode(resp: any,tmdb:any) {
 
   console.log(data);
 
-  // useEffect(() => {
+   useEffect(() => {
 
-  //   player?.current
-  //     ?.changeSource({
-  //       src: stream?.sources?.filter((t:any) => t.quality == "auto")[0]?.url,
-  //       title:"props.title",
-  //       poster: "https://i.imgur.com/M2aFrfc.jpeg"
+     player?.current
+       ?.changeSource({
+         src: stream?.sources?.filter((t:any) => t.quality == "auto")[0]?.url,
+         title:"props.title",
+         poster: "https://i.imgur.com/M2aFrfc.jpeg"
         
-  //     })
+       })
      
-  // }, [stream]);
+   }, [stream]);
   const subs :any = []
   const subtitles = () => {
     for (let i=0;i<s.length;i++) { subs.push({default : false,name:s[i]?.lang,src:s[i].url}) }
@@ -110,14 +110,14 @@ export default function MovieEpisode(resp: any,tmdb:any) {
     fetchImdbData();
     fetchCasts();
     setData(resp.resp)
-    // fetchStream()
+     fetchStream()
 
-    // setSource(
-    //   // Be a Promise or raw
-    //   fetch(`xxxx`).then((it) => {
-    //     return it
-    //   })
-    // )
+     setSource(
+       // Be a Promise or raw
+       fetch(`xxxx`).then((it) => {
+         return it
+     })
+     )
     
     
     const current = MyList.filter((item: any) => item.id == id);
@@ -127,12 +127,12 @@ export default function MovieEpisode(resp: any,tmdb:any) {
   }, [id, imdbId,resp]);
 
 
-  // const fetchStream = async () => {
-  //   let url = `https://api.consumet.org/meta/tmdb/watch/${resp?.tmdb?.episodeId}?id=${resp?.tmdb.id}`
-  //   let req = await fetch(url)
-  //   let res = await req.json()
-  //   setStream(res)
-  // }
+   const fetchStream = async () => {
+     let url = `https://api.consumet.org/meta/tmdb/watch/${resp?.tmdb?.episodeId}?id=${resp?.tmdb.id}`
+     let req = await fetch(url)
+     let res = await req.json()
+     setStream(res)
+   }
 console.log(resp)
   const handleIframe  = () => {
 
@@ -205,7 +205,7 @@ console.log(resp)
             onLoadCapture={handleIframe}
               className="p-2 w-full h-[270px] lg:h-[872px] mx-auto"
 
-              // src={`https://vidsrc.cc/v2/embed/movie/${id}`}
+               src={`https://vidsrc.cc/v2/embed/movie/${id}`}
 
               src={`https://vidsrc.pro/embed/movie/${id}`}
               allowFullScreen
